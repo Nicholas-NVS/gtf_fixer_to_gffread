@@ -14,7 +14,7 @@ for line in fasta:
 		header = line[1:].split(" ")[0].rstrip()
 		seq_len = 0
 	else:
-		seq_len += len(line)
+		seq_len += len(str(line).rstrip())
 		transcript[header] = seq_len 
 for line in gtf:
 	line_list = line.split("\t")
