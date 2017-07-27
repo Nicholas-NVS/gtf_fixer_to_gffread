@@ -11,9 +11,11 @@ log = open(str(sys.argv[1]).split("/")[-1].split(".")[0]+"_log.txt", "w")
 transcript = {}
 for line in fasta:
 	if line[0] == '>':
-		header = line[1:].split(" ")[0]
+		header = line[1:].split(" ")[0].rstrip()
+		seq_len = 0
 	else:
-		transcript[header] = len(line)
+		seq_len += len(line)
+		transcript[header] = seq_len 
 for line in gtf:
 	line_list = line.split("\t")
 	header = line_list[0]
